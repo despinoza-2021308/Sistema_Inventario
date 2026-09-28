@@ -1,0 +1,13 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Movimiento Inventario",
+  "enabled": 1,
+  "modified": "2026-09-28 09:19:32.364028",
+  "module": "Sistema Inventario",
+  "name": "MOV INV",
+  "script": "frappe.ui.form.on('Movimiento Inventario', {\r\n    setup(frm) {\r\n        // Solo mostrar bodegas activas\r\n        ['bodega_origen', 'bodega_destino'].forEach(campo => {\r\n            frm.set_query(campo, () => ({ filters: { activa: 1 } }));\r\n        });\r\n    },\r\n    refresh(frm) {\r\n        mostrar_bodegas(frm);\r\n    },\r\n    tipo_movimiento(frm) {\r\n        mostrar_bodegas(frm);\r\n    }\r\n});\r\n\r\nfrappe.ui.form.on('Detalle Movimiento', {\r\n    cantidad(frm, cdt, cdn) {\r\n        calcular_fila(frm, cdt, cdn);\r\n    },\r\n    costo_unitario(frm, cdt, cdn) {\r\n        calcular_fila(frm, cdt, cdn);\r\n    },\r\n    detalle_remove(frm) {\r\n        calcular_total(frm);\r\n    }\r\n});\r\n\r\n// Entrada: solo destino | Salida: solo origen | Transferencia: ambas | Ajuste: solo destino\r\nfunction mostrar_bodegas(frm) {\r\n    const tipo = frm.doc.tipo_movimiento;\r\n    const usa_origen = ['Salida', 'Transferencia'].includes(tipo);\r\n    const usa_destino = ['Entrada', 'Transferencia', 'Ajuste'].includes(tipo);\r\n\r\n    frm.toggle_display('bodega_origen', usa_origen);\r\n    frm.toggle_reqd('bodega_origen', usa_origen);\r\n    frm.toggle_display('bodega_destino', usa_destino);\r\n    frm.toggle_reqd('bodega_destino', usa_destino);\r\n}\r\n\r\nfunction calcular_fila(frm, cdt, cdn) {\r\n    const row = locals[cdt][cdn];\r\n    frappe.model.set_value(cdt, cdn, 'subtotal', flt(row.cantidad) * flt(row.costo_unitario));\r\n    calcular_total(frm);\r\n}\r\n\r\nfunction calcular_total(frm) {\r\n    let total = 0;\r\n    (frm.doc.detalle || []).forEach(row => {\r\n        total += flt(row.subtotal);\r\n    });\r\n    frm.set_value('total', total);\r\n}\r\n",
+  "view": "Form"
+ }
+]

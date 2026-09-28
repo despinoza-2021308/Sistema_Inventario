@@ -1,0 +1,124 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "MOV-.YYYY.-.#####",
+ "creation": "2026-09-27 20:36:25.349324",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_pdpx",
+  "tipo_movimiento",
+  "fecha",
+  "bodega_origen",
+  "bodega_destino",
+  "referencia",
+  "observaciones",
+  "total",
+  "amended_from",
+  "section_break_ftjj",
+  "detalle"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_pdpx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "tipo_movimiento",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Tipo de Movimiento",
+   "options": "Entrada\nSalida\nTransferencia\nAjuste",
+   "reqd": 1,
+   "sort_options": 1
+  },
+  {
+   "fieldname": "fecha",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Fecha",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bodega_origen",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Bodega Origen",
+   "options": "Bodega"
+  },
+  {
+   "fieldname": "bodega_destino",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Bodega Destino",
+   "options": "Bodega"
+  },
+  {
+   "fieldname": "referencia",
+   "fieldtype": "Data",
+   "label": "Referencia",
+   "reqd": 1
+  },
+  {
+   "fieldname": "observaciones",
+   "fieldtype": "Small Text",
+   "label": "Observaciones"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "label": "Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Movimiento Inventario",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "section_break_ftjj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "detalle",
+   "fieldtype": "Table",
+   "label": "Detalle",
+   "options": "Detalle Movimiento"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-09-28 09:19:29.730023",
+ "modified_by": "Administrator",
+ "module": "Sistema Inventario",
+ "name": "Movimiento Inventario",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

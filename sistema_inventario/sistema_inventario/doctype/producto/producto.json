@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "PROD-.#####",
+ "creation": "2026-09-27 20:24:47.001333",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_jbcn",
+  "codigo",
+  "nombre_producto",
+  "categoria",
+  "precio_venta",
+  "stock_minimo",
+  "stock_total"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_jbcn",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "codigo",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "codigo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "nombre_producto",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "nombre_producto",
+   "reqd": 1
+  },
+  {
+   "fieldname": "categoria",
+   "fieldtype": "Link",
+   "label": "categoria",
+   "options": "Categoria Producto"
+  },
+  {
+   "fieldname": "precio_venta",
+   "fieldtype": "Currency",
+   "label": "precio_venta"
+  },
+  {
+   "fieldname": "stock_minimo",
+   "fieldtype": "Int",
+   "label": "stock_minimo"
+  },
+  {
+   "fieldname": "stock_total",
+   "fieldtype": "Int",
+   "label": "stock_total",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-28 09:19:28.505969",
+ "modified_by": "Administrator",
+ "module": "Sistema Inventario",
+ "name": "Producto",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "codigo,nombre_producto",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "nombre_producto"
+}
